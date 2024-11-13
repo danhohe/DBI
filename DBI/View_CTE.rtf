@@ -1,0 +1,25 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2819
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18780\viewh12960\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 CREATE OR REPLACE VIEW emp_sal_under_3000 AS	-- Replace ist optional\
+	SELECT * FROM emp WHERE sal < 3000\
+\'97WITH CHECK OPTION CONSTRAINT check_sal_lower_3000; \'97 CONSTRAINT _NAME_ ist optional\
+WITH READ ONLY; \'97optional CONSTRAINT sal_under_3000_ro\
+\
+ROLLBACK; \
+\
+SELECT * FROM emp_sal_under_3000;\
+\
+INSERT INTO emp_sal_under_3000 VALUES (8888, `Gerhard`, `Clerk`, NULL, NULL, 1000, NULL, 20);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 INSERT INTO emp_sal_under_3000 VALUES (7777, `Hugo`, `Clerk`, NULL, NULL, 5000, NULL, 20);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+DROP VIEW emp_sal_under_3000;\
+\
+}

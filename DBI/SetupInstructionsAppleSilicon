@@ -1,0 +1,19 @@
+# Setup Instructions
+
+1. Download the image from DockerHub --> gvenzl/oracle-free
+2. Run following command from the terminal and change "your password" to your desired password (this container is setting up a persistent database!):
+`docker run -d -p 1521:1521 -e ORACLE_PASSWORD=your password -v oracle-volume:/opt/oracle/oradata gvenzl/oracle-free`
+3. Wait until the database is ready to use.
+4. Connect via the SQL Developer to the database using "system" as username and your password as in step 2.
+5. Check the connection with the "test" button.
+6. If everything worked --> Congratulations you just have a created a database. If not please check the troubleshooting section or delete the created container and begin with step 2.
+
+# Troubleshooting
+Double check if you downloaded the right image from DockerHub. Make sure to use gvenzl/oracle-free .
+### DO NOT DOWNLOAD gvenzl/oracle-xe
+
+check if you passed the right ports in the command(shouldn't be a problem if you copy paste the command from step 2).
+
+make sure you have set a password in the command. If no password is set oracle uses a default password (please google it), if your password isn't replaced then the password is "your password"
+
+for every other problem that might occur please open a issue, i've only listed problems in which i ran into.
